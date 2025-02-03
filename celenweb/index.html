@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js Example</title>
+  <style>
+    /* Add some basic styling to our page */
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<h1>My First Heading</h1>
+  <!-- Create a div to contain our SVG image -->
+  <div id="svg-container"></div>
+
+  <!-- Include the D3.js library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Add our JavaScript code -->
+  <script>
+    // Create an SVG element to render our SVG image
+    const svg = d3.select('#svg-container')
+      .append('svg')
+      .attr('width', 800)
+      .attr('height', 600);
+
+    // Load the SVG files using fetch API
+    fetch('C:/Users/DELL/Desktop/celen mlp/5dresults/fc1/24081916_25/sigma0.1_acc99.8_24081916_25.svg')
+      .then(response => response.text())
+      .then(svgText => {
+        // Parse the SVG text
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+
+        // Append the SVG elements to the canvas
+        svg.node().appendChild(svgDoc.documentElement);
+      });
+  </script>
+</body>
+</html>
